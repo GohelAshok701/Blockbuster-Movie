@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.blockbustermovie.MovieDetailActivity
 import com.app.blockbustermovie.R
+import com.app.blockbustermovie.databinding.RawMovieBinding
 import com.app.blockbustermovie.responses.Movie
 import com.app.blockbustermovie.utility.AppConstatnt
 import com.app.roomdatabaseretofithilt.other.WebUtility
@@ -20,17 +22,20 @@ class MovieAdapter(private val context: Context) :
 
     lateinit var movieList: List<Movie>
 
-    class MovieHolder(v: View) : RecyclerView.ViewHolder(v) {
-        var ivPoster: ImageView = v.findViewById(R.id.ivPoster)
-        var txtMovieName: TextView = v.findViewById(R.id.txtMovieName)
-        var txtReleaseDate: TextView = v.findViewById(R.id.txtReleaseDate)
-        var txtRating: TextView = v.findViewById(R.id.txtRating)
+    class MovieHolder(var rawMovieBinding: RawMovieBinding) :
+        RecyclerView.ViewHolder(rawMovieBinding.root) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
-        val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.raw_movie, parent, false)
-        return MovieHolder(itemView)
+        return MovieHolder(
+            DataBindingUtil.inflate
+                (
+                LayoutInflater.from(parent.context),
+                R.layout.raw_movie,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {
@@ -43,12 +48,14 @@ class MovieAdapter(private val context: Context) :
 
         Glide.with(context)
             .load(WebUtility.IMAGE_BASE_URL + movie.poster_path)
-            .into(holder.ivPoster)
+            .into(holder.rawMovieBinding.ivPoster)
 
-        holder.txtMovieName.text = context.resources.getString(R.string.name, movie.title)
-        holder.txtReleaseDate.text =
+
+        holder.rawMovieBinding.txtMovieName.text =
+            context.resources.getString(R.string.name, movie.title)
+        holder.rawMovieBinding.txtReleaseDate.text =
             context.resources.getString(R.string.movie_release, movie.release_date)
-        holder.txtRating.text =
+        holder.rawMovieBinding.txtRating.text =
             context.resources.getString(R.string.movie_rating, movie.vote_average)
 
         holder.itemView.setOnClickListener {
