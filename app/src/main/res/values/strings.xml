@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Blockbuster Movie</string>
+
+    <string name="a_z">A - Z</string>
+    <string name="z_a">Z - A</string>
+    <string name="date">Date</string>
+    <string name="rating">Rating</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="date_asc">Date Asc</string>
+    <string name="date_desc">Date Desc</string>
+    <string name="rating_desc">Rating Desc</string>
+    <string name="rating_asc">Rating Asc</string>
+
+    <string name="name">Name : %1$s</string>
+    <string name="movie_release">Released : %1$s</string>
+    <string name="movie_rating">Rating : %1$s</string>
+</resources>
