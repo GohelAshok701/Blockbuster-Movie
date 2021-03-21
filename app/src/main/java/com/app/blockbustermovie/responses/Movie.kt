@@ -3,13 +3,14 @@ package com.app.blockbustermovie.responses
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 data class Movie(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo
-    val id:Int,
+    val id: Int,
 
     @ColumnInfo
     val backdrop_path: String?,
@@ -34,4 +35,4 @@ data class Movie(
 
     @ColumnInfo
     val vote_count: String?
-)
+) : Serializable

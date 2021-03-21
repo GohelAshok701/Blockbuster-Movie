@@ -14,4 +14,5 @@
     <string name="name">Name : %1$s</string>
     <string name="movie_release">Released : %1$s</string>
     <string name="movie_rating">Rating : %1$s</string>
+    <string name="overview">Overview</string>
 </resources>

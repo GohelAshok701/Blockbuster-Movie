@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BlockbusterMovie">
         <activity
+            android:name=".MovieDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".MoviesActivity"
             android:screenOrientation="portrait">
             <intent-filter>
